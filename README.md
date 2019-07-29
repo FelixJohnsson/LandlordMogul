@@ -1,2 +1,2 @@
-# Monopoly2.0
+# Landlord Mogul
 A Monopoly-ish game in JS.
