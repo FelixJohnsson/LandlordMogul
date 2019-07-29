@@ -1,5 +1,5 @@
 # Landlord Mogul
-A Monopoly-ish game in JS. In development.
+A Monopoly-ish game in JS. In progress.
 
 Everything except value, balance and "fly too" button is static.
 
