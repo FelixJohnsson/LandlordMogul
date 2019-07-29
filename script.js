@@ -104,6 +104,7 @@ function showInfo(){
     document.getElementById('owner').innerHTML = 'John Doe';
     document.getElementById('value').innerHTML = targetPropertyValue + '€';
     document.getElementById('soldDate').innerHTML = '27/04 2019';
+    document.getElementById('type').innerHTML = 'Apartments';
 
     document.getElementById('class').innerHTML = 'C+';
     document.getElementById('streetClass').innerHTML = 'B-';
@@ -129,7 +130,7 @@ function buy() {
         document.getElementById('balance').style.color = "red"
         document.getElementById('balance').style.fontSize = "140%"
         setTimeout(() =>{
-            document.getElementById('balance').style.color = "black"
+            document.getElementById('balance').style.color = "whitesmoke"
             document.getElementById('balance').style.fontSize = "100%"
         },1000)
 
