@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="newResident.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Landlord Mogul</title>
+</head>
+<body>
+    <h2>Landlord Mogul</h2>
+    <button id="newResident">Create a new resident</button>
+    <div id="inputFields" style="display: none">
+
+        <hr>
+        <input type="text" id="firstname" placeholder="Firstname" required>
+        <input type="text" id="lastname" placeholder="Lastname" required><br>
+        <input type="text" id="age" placeholder="Age" size="2" maxlength="2" required>
+        <select id="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <br>
+        <br>
+        <p>We will give you a job on arrival. Your income will depend on your position.</p>
+        <button onclick="newResident()" id="newResidentBtn">Start your new life</button>
+    </div>
+
+        <div id="residentOutput" style="display: none">
+            <p>Name: <i id="nameOutput"> </i></p>
+            <p>Age: <i id="ageOutput"> </i></p>
+            <p>Gender: <i id="genderOutput"> </i></p>
+            <p>Income: <i id="income"> </i>€</p>
+            <p>Occupation: <i id="occupation"> </i></p>
+            <p>Workplace: <i id="workplace"> </i></p>
+        </div>
+
+</body>
+<script src="./newResident.js"></script>
+</html>

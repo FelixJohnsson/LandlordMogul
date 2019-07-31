@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="login.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Landlord Mogul</title>
+</head>
+<body>
+    <h2>Landlord Mogul</h2>
+    <button id="newResident">Connect to your character</button>
+    <div id="inputFields" style="display: none">
+
+        <hr>
+        <input type="text" id="characterId" placeholder="Character ID" required>
+        <br>
+        <br>
+        <button onclick="loginResident()">Connect</button>
+    </div>
+    <p id="error"></p>
+        <div id="residentOutput" style="display: none">
+            <p>Name: <i id="nameOutput"> </i></p>
+            <p>Age: <i id="ageOutput"> </i></p>
+            <p>Gender: <i id="genderOutput"> </i></p>
+            <p>Income: <i id="income"> </i>€</p>
+            <p>Occupation: <i id="occupation"> </i></p>
+            <p>Workplace: <i id="workplace"> </i></p>
+        </div>
+
+</body>
+<script src="./login.js"></script>
+</html>
