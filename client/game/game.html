@@ -12,15 +12,27 @@
 
     <link href='./game.css' rel='stylesheet' />
     <script src="./gameMap.js"></script>
+    <script src="./geolocation.js"></script>
 </head>
 
-<body onload="renderMap()">
-
-    <div id='map'></div>
-    <div>
-        <p>Your work: <i id="workplace"></i> </p>
-        <p>Titel: <i id="titel"></i></p>
+<body>
+    <div id="wrapper">
+        <div class="row">
+            <div class="col-10">
+                <div id='map'></div>
+            </div>
+            <div class="col-2">
+                <div class="card">
+                    <h3 class="title">Character</h3>
+                    <hr>
+                    <b class="smallTitle">Name: </b><i id="name"></i>
+                    <b class="smallTitle">Workplace: </b><i id="workplace"></i>
+                    <b class="smallTitle">Titel: </b><i id="titel"></i>
+                    <b class="smallTitle">Income: </b><i id="income"></i>
+                    <button onclick="locate()">Locate</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
-
 </html>

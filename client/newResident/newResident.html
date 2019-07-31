@@ -12,6 +12,7 @@
 <body>
     <h2>Landlord Mogul</h2>
     <button id="newResident">Create a new resident</button>
+    <button onclick="window.location.replace('../login/login.html')">Connect to a resident</button>
     <div id="inputFields" style="display: none">
 
         <hr>
@@ -35,8 +36,14 @@
             <p>Income: <i id="income"> </i>€</p>
             <p>Occupation: <i id="occupation"> </i></p>
             <p>Workplace: <i id="workplace"> </i></p>
-        </div>
 
+            <p>ID: <i id="id"> </i></p>
+            <b>Copy this ID, this will be your way of login in</b>
+            <hr>
+
+            <button onclick="window.location.replace('../game/game.html')">Go to game</button>
+        </div>
+        
 </body>
 <script src="./newResident.js"></script>
 </html>

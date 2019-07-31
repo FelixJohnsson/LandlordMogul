@@ -6,8 +6,9 @@ const faker = require('faker/locale/en');
 const uuid = require('uuid/v4')
 const monk = require('monk');
 
-const db = monk('localhost/residents');
-const residents = db.get('Residents');
+const db = monk('localhost/database');
+const residents = db.get('residents');
+const buildings = db.get('buildings');
 
 app.use(cors());
 app.use(express.json());
@@ -38,6 +39,44 @@ app.put('/getResident', (req, res) => {
     residents.findOne({id: req.body.characterID}).then(e => {
         res.json(e);
     })
+})
+
+app.put('/addBuilding', (req, res) => {
+
+    buildings.findOne({id: req.body.id}).then(e => {
+        res.status(400);
+    })
+
+    let value = req.body.value.split(' ').join('')
+    
+    if (req.body.type === 'apartment'){
+        let apartmentBuilding = {
+            type: req.body.type,
+            id: req.body.id,
+            value: value,
+            numberOfApartments: req.body.numberOfApartments,
+            rentCost: req.body.rentCost,
+            residents: {
+
+            }
+        }
+        buildings.insert(apartmentBuilding).then(() => {
+            res.json(apartmentBuilding);
+        })
+        apartmentBuilding = {};
+    } else if(req.body.type === 'office') {
+        let officeBuilding = {
+            type: req.body.type,
+            id: req.body.id,
+            value: value,
+            name: faker.company.companyName(),
+        }
+        buildings.insert(officeBuilding).then(() => {
+            res.json(officeBuilding);
+        })
+        officeBuilding = {};
+    }
+    
 })
 
 

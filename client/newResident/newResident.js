@@ -35,7 +35,8 @@ function newResident(){
         document.getElementById('income').innerHTML = e.income;
         document.getElementById('occupation').innerHTML = e.occupation;
         document.getElementById('workplace').innerHTML = e.work;
+
+        document.getElementById('id').innerHTML = e.id;
+        sessionStorage.setItem("id", e.id);
     }) 
 }
-
-
