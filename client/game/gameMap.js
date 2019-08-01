@@ -8,9 +8,9 @@ function renderMap() {
         container: 'map',
         style: 'mapbox://styles/felixjohnsson/cjxw8alzq06j71cnunhrfifmz',
         center: [crd.longitude, crd.latitude],
-        zoom: 18,
+        zoom: 17,
         pitch: 50,
-        interactive: false
+        interactive: true
     });
 
     map.on('load', function () {

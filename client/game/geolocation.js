@@ -1,8 +1,6 @@
 let counter = 0;
 const options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
+    timeout: 60000,
 };
 
 function success(pos) {
