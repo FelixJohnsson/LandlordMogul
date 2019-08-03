@@ -5,7 +5,6 @@
     <meta charset='utf-8' />
     <title>Landlord Mogul</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js'></script>
@@ -13,24 +12,33 @@
 
     <link href='./game.css' rel='stylesheet' />
     <script src="./initBuildings.js"></script>
+    <script src="./geolocation.js"></script>
 </head>
 
 <body onload="renderMap()">
+    <div id="wrapper">
+        <div class="row">
+            <div class="col-10">
+                <div id='map'></div>
+            </div>
+            <div class="col-2">
+                <div class="card">
+                    <h3 class="title">Character</h3>
+                    <hr>
+                    <b class="smallTitle">Building ID: </b><i id="buildingID"></i>
+                    <b class="smallTitle">Latitude: </b><i id="lat"></i>
+                    <b class="smallTitle">Longitude: </b><i id="lng"></i>
+                    <b class="smallTitle">Height: </b><i id="buildingHeight"></i>
+                    <b class="smallTitle">m2: </b><i id="buildingm2"></i>
+                    <b class="smallTitle">Number of apartments: </b><i id="numberOfApartments"></i>
+                    <b class="smallTitle">Value: </b><i id="value"></i>
 
-    <div id='map'></div>
-    <div>
-        <p>Building ID: <i id="id"></i> </p>
-        <p>Value: <i id="value"></i></p>
-        <select id="type">
-            <option value="apartment">Aparment building</option>
-            <option value="office">Office building</option>
-        </select><br><br>
-        <input type="text" id="apartments" placeholder="Number of Apartments" size="20" maxlength="2"><br><br>
-        <input type='text' id="rentCost" placeholder="Rent cost" size="6" maxlength="5"><br><br>
-
-        <button onclick="registerBuilding()">Register building</button>
-        <p id="res"></p>
+                    <button >Locate</button>
+                    <button onclick="randomValue()">Random</button>
+                    <button id="addBuilding">Add building</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
-
 </html>

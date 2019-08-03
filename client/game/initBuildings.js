@@ -43,13 +43,13 @@ function renderMap() {
             'type': 'fill-extrusion',
             'source': {
                 'type': 'geojson',
-                'data': 'https://api.myjson.com/bins/u2tql'
+                'data': 'https://api.myjson.com/bins/17cpr1'
             },
             'paint': {
                 'fill-extrusion-color': '#ada795',
                 'fill-extrusion-height': ['get', 'height'],
                 'fill-extrusion-base': ['get', 'base_height'],
-                'fill-extrusion-opacity': 0.9
+                'fill-extrusion-opacity': 1
             }
         });
 
@@ -57,13 +57,31 @@ function renderMap() {
 
             const lat = e.lngLat.lat;
             const lng = e.lngLat.lng;
-            const targetPropertyValue = e.features[0].properties.value
+            const height = e.features[0].properties.height;
+            const m2 = e.features[0].properties.m2;
+            const size = m2 * height;
+            const sizeRoot = Math.sqrt(size/1.8) *2;
+            const numberOfApartments = sizeRoot/10;
+            const apartmentClass = 57;
 
-            document.getElementById('id').innerHTML = lat.toString() + lng.toString()
-            document.getElementById('value').innerHTML = targetPropertyValue;
+            const latFromCenter = 59.332491 - lat
+            const lngFromCenter = 18.077331 - lng
 
-            document.getElementById('')
-            document.getElementById('')
+            const latDistancePoints = Math.sqrt(latFromCenter*latFromCenter)*1000;
+            const lngDistancePoints = Math.sqrt(lngFromCenter*lngFromCenter)*1000;
+            const distancePercentage = (latDistancePoints + lngDistancePoints)/1000;
+            console.log(distancePercentage)
+            const value =  Math.round(numberOfApartments * (apartmentClass * 2300) * ((100 - distancePercentage)/100));
+            let valueStr = (value).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+            
+            document.getElementById('buildingID').innerHTML = lat.toString() + lng.toString()
+            document.getElementById('lng').innerHTML = lng;
+            document.getElementById('lat').innerHTML = lat;
+            document.getElementById('buildingHeight').innerHTML = height;
+            document.getElementById('buildingm2').innerHTML = m2;
+            document.getElementById('numberOfApartments').innerHTML = Math.round(numberOfApartments);
+            document.getElementById('value').innerHTML = valueStr + '€';
+
         })
 
         // Change the cursor to a pointer when the mouse is over the states layer.
@@ -96,28 +114,14 @@ function renderMap() {
     }) 
     
 }
-function registerBuilding() {
-    
-    const buildingID = document.getElementById('id').innerHTML;
-    const buildingValue = document.getElementById('value').innerHTML;
-    const typeInput = document.getElementById('type');
-    const type = typeInput.options[typeInput.selectedIndex].value;
-    const numberOfApartments = document.getElementById('apartments').value;
-    const rentCost = document.getElementById('rentCost').value;
+function addBuilding(e) {
 
     if (buildingID === 'Error'){document.getElementById('res').innerHTML = "Select a building."}
 
     let apartmentBuilding = {
-        type:'apartment',
         id:buildingID,
-        value: buildingValue,
         numberOfApartments: numberOfApartments,
         rentCost: rentCost,
-    }
-    let officeBuilding = {
-        type:'office',
-        id:buildingID,
-        value: buildingValue,
     }
 
     if(type === 'apartment'){
@@ -144,29 +148,5 @@ function registerBuilding() {
             }
         })
         apartmentBuilding = {}
-    } else if(type === 'office') {
-        fetch('http://localhost:3000/addBuilding', {
-            method: 'PUT',
-            body: JSON.stringify(officeBuilding),
-            headers: {
-                'content-type': 'application/json'
-            }
-        }).then((e) =>{
-            if (e.status === 200){
-                document.getElementById('res').innerHTML = "Added."
-            } else {
-                document.getElementById('res').innerHTML = "Error."
-            }
-        })
-        officeBuilding = {}
     }
-
-
-
-
 }
-/*
-            
-
-
- */

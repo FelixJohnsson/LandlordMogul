@@ -47,11 +47,14 @@ app.put('/addBuilding', (req, res) => {
         res.status(400);
     })
 
-    let value = req.body.value.split(' ').join('')
     
     if (req.body.type === 'apartment'){
+
+        let size = req.body.m2 * req.body.height;
+        let numberOfApartments = Math.floor(Math.sqrt((size /1.8)/10) * 2.4);
+        console.log(numberOfApartments)
+        
         let apartmentBuilding = {
-            type: req.body.type,
             id: req.body.id,
             value: value,
             numberOfApartments: req.body.numberOfApartments,
@@ -64,17 +67,6 @@ app.put('/addBuilding', (req, res) => {
             res.json(apartmentBuilding);
         })
         apartmentBuilding = {};
-    } else if(req.body.type === 'office') {
-        let officeBuilding = {
-            type: req.body.type,
-            id: req.body.id,
-            value: value,
-            name: faker.company.companyName(),
-        }
-        buildings.insert(officeBuilding).then(() => {
-            res.json(officeBuilding);
-        })
-        officeBuilding = {};
     }
     
 })

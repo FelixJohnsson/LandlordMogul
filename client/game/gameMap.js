@@ -120,7 +120,7 @@ function renderMap() {
             'type': 'fill-extrusion',
             'source': {
                 'type': 'geojson',
-                'data': 'https://api.myjson.com/bins/z2nt9'
+                'data': 'https://api.myjson.com/bins/af8a5'
             },
             'paint': {
                 'fill-extrusion-color': '#ada795',
@@ -134,14 +134,14 @@ function renderMap() {
             targetPropertyLocation = e.lngLat;
             targetPropertyValue = e.features[0].properties.value
 
-            /*map.flyTo({
+            map.flyTo({
                 center: [
                     targetPropertyLocation.lng,
                     targetPropertyLocation.lat
                 ],
                 zoom: 18,
                 pitch: 75
-            });*/
+            });
             new mapboxgl.Popup()
                 .setLngLat(e.lngLat)
                 .setHTML(e.features[0].properties.value + '€' + '<hr>' + '<button onclick="buy()">Buy</button>')
@@ -209,3 +209,8 @@ function flyToTarget() {
         pitch: 60
     });
 }
+
+/*document.getElementById('addBuilding').addEventListener('click', (e) => {
+    addBuilding(e);
+})
+*/
